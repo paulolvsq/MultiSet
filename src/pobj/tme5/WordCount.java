@@ -79,7 +79,7 @@ public class WordCount {
 		Chrono chrono = new Chrono();
 		wordcountHashMultiSet(bouquin);
 		chrono.stop();
-		System.out.println(bouquin.toString());
+		//System.out.println(bouquin.toString());
 		/*
 		Chrono chrono2 = new Chrono();
 		wordcountNaiveMultiSet(new NaiveMultiSet<String>());

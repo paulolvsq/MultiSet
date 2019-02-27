@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T> {
     /**
@@ -45,6 +46,7 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 		int nb_Occ = count(e);
 		ensemble.put(e, count + nb_Occ);
 		size += count;
+		//assert isConsistent();
 		return true;
 		
 	}
@@ -57,6 +59,7 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 		int nb_Occ = count(e);
 		ensemble.put(e, nb_Occ + 1);
 		size++;
+	    //assert isConsistent();
 		return true;
 	}
 	/**
@@ -75,14 +78,15 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 			if (nb_Occ == 1) {
 				ensemble.remove(tmp);
 				size--;
+				//assert isConsistent();
 				return true;
 			}
-			System.out.println(ensemble.size());
 			ensemble.put(tmp, nb_Occ - 1);
 			size--;
-			System.out.println(ensemble.size());
+			//assert isConsistent();
 			return true;
 		}
+		//assert isConsistent();
 		return false;
 	}
 	/**
@@ -101,12 +105,15 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 			int nb_Occ = ensemble.get(tmp);
 			if(nb_Occ < count) {
 				ensemble.remove(tmp);
+				assert isConsistent();
 				return true;
 			}
 			ensemble.put(tmp, nb_Occ - count);
 			size -= count;
+			assert isConsistent();
 			return true;
 		}
+		assert isConsistent();
 		return false;
 	}
 	/**
@@ -169,6 +176,21 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 		}
 		return elements;*/
 		return new ArrayList<T>(ensemble.keySet());
+	}
+	/**
+	 * retourne true si la structure du multi ensemble est cohérente
+	 * false sinon
+	 * @return boolean
+	 */
+	public boolean isConsistent() {
+		int nb_Elem = 0;
+		for(Entry<T, Integer> valeur : this.ensemble.entrySet()) {
+			Integer n = valeur.getValue();
+			if(n < 0) return false;
+			nb_Elem += n;
+		}
+		if(this.ensemble.size() != nb_Elem) return false;
+		return true;
 	}
 	
 }
