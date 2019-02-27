@@ -1,0 +1,1 @@
+A simple way to implement a HashMultiSet with interfaces
