@@ -75,7 +75,9 @@ public class WordCount {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		HashMultiSet<String> bouquin = new HashMultiSet<String>();
+		//HashMultiSet<String> bouquin = new HashMultiSet<String>();
+		MultiSet<String> tmp = new HashMultiSet<>();
+		MultiSetDecorator<String> bouquin = new MultiSetDecorator<String>(tmp);
 		Chrono chrono = new Chrono();
 		wordcountHashMultiSet(bouquin);
 		chrono.stop();
