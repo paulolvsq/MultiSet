@@ -6,7 +6,14 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class MultiSetParser {
-	
+	/**
+	 * prend en paramètre un String nom qui correspond à un chemin vers un fichier
+	 * lit le contenu du fichier et l'ajoute dans un MultiSetDecorator
+	 * attrape des exceptions en cas de fichier non trouvé, erreur d'entrée/sortie, format des nombres d'occurrences, et tout autre type d'exception
+	 * @param nom
+	 * @return decorateur
+	 * @throws InvalidMultiSetFormat
+	 */
 	public static MultiSet<String> parse(String nom) throws InvalidMultiSetFormat {
 		MultiSet<String> tmp = new HashMultiSet<>();
 		MultiSet<String> decorateur = new MultiSetDecorator<>(tmp);
