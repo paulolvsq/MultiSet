@@ -154,18 +154,32 @@ public class HashMultiSet<T> extends AbstractCollection<T> implements MultiSet<T
 	}
 	/**
 	 * retourne la chaine de caractères qui affiche correctement la HashMap ensemble
+	 * pour la question 5.2
 	 */
 	public String toString() {
 		StringBuffer s = new StringBuffer();
-		s.append("[ ");
+		s.append("[\n");
 		for(Map.Entry<T, Integer> element : ensemble.entrySet()) {
 			T tmp = element.getKey();
 			Integer valeur = element.getValue();
 			s.append(tmp.toString()+" : "+ valeur.toString()+" ;\n");
 		}
-		s.append(" ]");
+		s.append("]");
 		return s.toString();
 	}
+	/**
+	 * retourne la chaine de caractères qui affiche correctement la HashMap ensemble
+	 * pour la question 5.6
+	 */
+	/*public String toString() {
+		StringBuffer s = new StringBuffer();
+		for(Map.Entry<T, Integer> element : ensemble.entrySet()) {
+			T tmp = element.getKey();
+			Integer valeur = element.getValue();
+			s.append(tmp.toString()+":"+ valeur.toString()+"\n");
+		}
+		return s.toString();
+	}*/
 	/**
 	 * retourne une ArrayList<T> qui contient tous les éléments de la HashMap ensemble
 	 */

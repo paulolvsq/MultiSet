@@ -1,9 +1,13 @@
 package pobj.tme5; 
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
+
 import pobj.util.Chrono;
 
 public class WordCount {
@@ -81,7 +85,16 @@ public class WordCount {
 		Chrono chrono = new Chrono();
 		wordcountHashMultiSet(bouquin);
 		chrono.stop();
-		//System.out.println(bouquin.toString());
+		System.out.println(bouquin.toString());
+		try {
+			@SuppressWarnings("resource")
+			PrintWriter writer = new PrintWriter("affichage_warandpeace_q5-2.txt", "UTF-8");
+			writer.println(bouquin.toString());
+		} catch (FileNotFoundException e) {
+			System.out.println(e.getMessage());
+		} catch (UnsupportedEncodingException e) {
+			System.out.println(e.getMessage());
+		}
 		/*
 		Chrono chrono2 = new Chrono();
 		wordcountNaiveMultiSet(new NaiveMultiSet<String>());

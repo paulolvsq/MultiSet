@@ -118,5 +118,14 @@ public class MultiSetDecorator<T> implements MultiSet<T> {
 		if(nb_Elm != decorated.size()) return false;
 		return true;
 	}
+	/**
+	 * affiche le MultiSetDecorator selon le format suivant : 
+	 * chaine1:valeur1
+	 * chaine2:valeur2
+	 * chaine3:valeur3 etc...
+	 */
+	public String toString() {
+		return decorated.toString();
+	}
 
 }
